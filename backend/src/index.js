@@ -3,7 +3,6 @@ import flickrRoutes from "./routes/flickrRoutes.js";
 
 // Initializations
 const app = express();
-// const router = express.Router();
 
 // Port config
 app.set("port", process.env.PORT || 3000);
