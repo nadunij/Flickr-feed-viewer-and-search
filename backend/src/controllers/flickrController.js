@@ -1,6 +1,7 @@
 // import superagent from "superagent";
 import axios from "axios";
 import { GenerateErrorCode, GenerateResponse } from "../services/responseService.js";
+import config from "../config.js"
 
 //move the logic into a different file (find the proper structure first)
 
@@ -11,7 +12,7 @@ export const getAllPhotos = async (req, response) => {
     console.log("getAllPhotos function start :p");
 
     try{
-        const photos =  await  axios.get("https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=55c28b4ae13b04e7ee4a486afee4cd78&format=json&nojsoncallback=true") 
+        const photos =  await  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=${config.API_KEY}&format=json&nojsoncallback=true`) 
         // console.log(typeof photos.data.photos.photo);    
         // console.log(photos.data.photos.photo);
    
@@ -35,7 +36,7 @@ export const searchResults = async (req, response) => {
     console.log("searchPhotos function start :p");
 
     try{
-        const searchPhotos =  await  axios.get("https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=55c28b4ae13b04e7ee4a486afee4cd78&tags=cat&format=json&nojsoncallback=true") 
+        const searchPhotos =  await  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${config.API_KEY}&tags=cat&format=json&nojsoncallback=true`) 
         // console.log(typeof photos.data.photos.photo);    
         console.log(searchPhotos.data.photos.photo);
    
