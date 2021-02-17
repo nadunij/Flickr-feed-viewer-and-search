@@ -16,10 +16,11 @@ export const getAllPhotos = async (req, response) => {
         // console.log(photos.data.photos.photo);
    
         // "https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"
-        const returnres = {}
+        let returnres = {}
         photos.data.photos.photo.forEach(photo => {
         let image = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
-        returnres[photo.id] = image
+        // returnres[photo.id] = image;
+        returnres[photo.id] = image;
         });
         response.status(200).json(GenerateResponse("Get all photos success",returnres));
   
@@ -39,7 +40,7 @@ export const searchResults = async (req, response) => {
         console.log(searchPhotos.data.photos.photo);
    
         // "https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"
-        const returnResponse = {}
+        let returnResponse = {}
         searchPhotos.data.photos.photo.forEach(photo => {
         let image = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
         returnResponse[photo.id] = image
