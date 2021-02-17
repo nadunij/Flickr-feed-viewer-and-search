@@ -1,5 +1,6 @@
 import express from "express";
 import flickrRoutes from "./routes/flickrRoutes.js";
+import cors from "cors";
 
 // Initializations
 const app = express();
@@ -10,11 +11,9 @@ app.set("port", process.env.PORT || 3000);
 app.get('/', function (req, res) {
     res.send('GET request to the homepage')
   })
-
-app.get('/search', function (req, res) {
-    res.send('search function')
-  })
   
+app.use(cors({origin: '*'}))
+
 app.use("/api/flickr", flickrRoutes)
 
 app.listen(app.get("port"), () => {

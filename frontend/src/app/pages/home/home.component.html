@@ -1,0 +1,84 @@
+<div class="container py-5">
+
+    <div class="jumbotron">
+        <h1 class="text-secondary">Home</h1>
+    </div>
+
+    <!-- <div>
+        <p class="text-secondary">Recent photos</p>
+        <div *ngFor="let item of photos | keyvalue">
+            Key: <b>{{ item.key }}</b> and Value: <b>{{ item.value }}</b>
+        </div>
+    </div> -->
+
+    <!-- <div class="row">
+        <div class="card" style="width: 18rem;" *ngFor="let item of photos | keyvalue">
+            <img [src]="item.value" class="card-img-top" alt="xxx">
+        </div>
+    </div> -->
+
+
+    <div class="grid">
+        <ng-container *ngFor="let item of photos | keyvalue">
+            <img [src]="item.value" alt="Card image cap" sizes="(max-width: 600px) 480px,
+            800px">
+            <!-- <div><input type="checkbox"></div> -->
+        </ng-container>
+    </div>
+
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-3 mx-auto my-5" *ngFor="let item of photos | keyvalue">
+
+                <img [src]="item.value" alt="Card image cap">
+
+            </div>
+        </div>
+    </div> -->
+
+
+
+    <!-- <div class="album py-5 bg-light">
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div *ngFor="let item of photos | keyvalue">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                xmlns="https://farm66.staticflickr.com/65535/50949803563_9a464c0f6f.jpg"
+                                preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
+                                aria-label="Placeholder: Thumbnail">
+                                <title>Placeholder</title>
+                                <rect width="100%" height="100%" fill="#55595c" />
+                                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                            </svg>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                This is a wider card with supporting text below as a natural
+                                lead-in to additional content. This content is a little bit
+                                longer.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        View
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">
+                                        Edit
+                                    </button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div> -->
+</div>
