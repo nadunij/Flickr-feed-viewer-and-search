@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/allPhotos", getAllPhotos);
 
 //retrieving search results by tag
-router.get("/searchResults", searchResults);
+// router.get("/searchResults", searchResults);
+router.get("/search", searchResults);
 
 export default router;
