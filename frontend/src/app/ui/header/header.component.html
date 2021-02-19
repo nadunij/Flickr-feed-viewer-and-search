@@ -1,21 +1,19 @@
-<!-- You can change the values `
-dark
-` here with any of the following: -->
-<!-- dark, light, primary, secondary, success, info, danger, warning -->
+<!-- nav bar -->
 <nav class="navbar navbar-dark bg-dark">
-    <!-- This is the application title with a link to the root -->
     <a class="navbar-brand" routerLinkActive="active" routerLink="/">Flickr Feed Viewer and Search</a>
-    <!-- This is a spacer so the links move to the end -->
     <div class="mr-auto"></div>
-    <!-- This main navigation links are defined here -->
+
+    <!-- Search -->
     <div class="navbar-expand">
-      <div class="navbar-nav">
-        <!-- Each link has the routerLink property set to a different route -->
-        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/home">Home</a>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </div>
+        <div class="navbar-nav">
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" #tagValue aria-label="Search">
+                <!-- (keyup)="onKey($event)"  -->
+                <button (click)="onSubmit(tagValue)" type="button" class="btn btn-outline-success my-2 my-sm-0">
+                    Search
+                </button>
+            </form>
+        </div>
     </div>
-  </nav>
+
+</nav>
