@@ -2,22 +2,29 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UiModule } from './ui/ui.module';
-import { PagesModule } from './pages/pages.module';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from "./ui/header/header.component";
+import { LayoutComponent } from './ui/layout/layout.component';
+// import { LoadComponent } from './utils/load/load.component';
+// import { SearchResultsComponent } from './pages/search-results/search-results.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    HeaderComponent,
+    LayoutComponent,
+    // LoadComponent,
+    // SearchResultsComponent,
+    routingComponents
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    UiModule,
-    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
