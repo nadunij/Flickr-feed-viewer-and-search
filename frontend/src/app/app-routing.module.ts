@@ -1,18 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './ui/layout/layout.component';
+import { HomeComponent } from './pages/home/home.component';
+import { SearchResultsComponent } from './pages/search-results/search-results.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: [
-      // Here we will add our application pages
-      { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
-    ],
-  },
-  // { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
- 
+  {path: '' , component: HomeComponent},
+  {path: 'search', component: SearchResultsComponent}
 ];
 
 @NgModule({
@@ -20,3 +13,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [SearchResultsComponent]

@@ -8,12 +8,20 @@ import { Observable } from "rxjs";
 })
 export class FlickrImagesService {
 
-  constructor(private http: HttpClient) { }
-
   private apiURL = environment.apiUrl;
+  searchedResults: any = [];
+
+  constructor(private http: HttpClient) { }
 
   //Get all photos
   getAllPhotos(): Observable<any> {
     return this.http.get(this.apiURL + 'allPhotos');
   }
+
+  //Search from tag
+  searchFromTag(tag: string): Observable<any> {
+    return this.http.get(this.apiURL + `search/?tag=${tag}`);
+  }
+
+  
 }

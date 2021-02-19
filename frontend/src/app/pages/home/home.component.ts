@@ -9,6 +9,7 @@ import { FlickrImagesService } from "../../services/flickr-images.service";
 export class HomeComponent implements OnInit {
 
   photos = [];
+  public tag: string = "";
 
   constructor(private flickrImagesService: FlickrImagesService) { }
 
@@ -20,10 +21,9 @@ export class HomeComponent implements OnInit {
   getAllPhotos() {
     this.flickrImagesService.getAllPhotos().subscribe(result => {
       this.photos = result.response;
-      console.log(result.response);
-
-
+      console.log(result.response, 'response');
+      console.log(result, 'result');
     })
-
   }
+
 }
