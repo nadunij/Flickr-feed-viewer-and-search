@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header (tag)="getTheTag($event)"></app-header>
 
 <!-- Loading -->
 <div class="container" *ngIf="loading" style="min-height: 85vh;">
@@ -14,13 +14,12 @@
 </div>
 
 <!-- show search results -->
-<div class="container py-5" *ngIf="!loading">
+<app-container *ngIf="!loading&&!undefinedTag" [photos]="searchedPhotos">
+</app-container>
 
-    <div class="grid">
-        <ng-container *ngFor="let item of searchedPhotos | keyvalue">
-            <img [src]="item.value" alt="Card image cap" sizes="(max-width: 600px) 480px,
-            800px">
-        </ng-container>
+<!-- No such tag -->
+<div class="container py-5" *ngIf="undefinedTag">
+    <div class="jumbotron">
+        <h4 class="text-secondary">There are no matching Results.</h4>
     </div>
-
 </div>

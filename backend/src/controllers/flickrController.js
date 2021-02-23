@@ -2,9 +2,6 @@ import axios from "axios";
 import { GenerateErrorCode, GenerateResponse } from "../services/responseService.js";
 import config from "../config.js"
 
-//move the logic into a different file (find the proper structure first)
-
-
 //Get all photos
 
 export const getAllPhotos = async (req, response) => {
@@ -16,10 +13,13 @@ export const getAllPhotos = async (req, response) => {
         // console.log(photos.data.photos.photo);
    
         // "https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"
-        const returnres = {}
+        let returnres = {}
         photos.data.photos.photo.forEach(photo => {
         let image = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
-        returnres[photo.id] = image
+        returnres[photo.title] = image;
+        // returnres.push('url', image);
+        // returnres.push('id', photo.id);
+        // returnres = {'url':image, 'id':photo.id}
         });
         response.status(200).json(GenerateResponse("Get all photos success",returnres));
   
@@ -45,7 +45,7 @@ export const searchResults = async (req, response) => {
         const returnResponse = {}
         searchPhotos.data.photos.photo.forEach(photo => {
         let image = `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`;
-        returnResponse[photo.id] = image
+        returnResponse[photo.title] = image
         });
         response.status(200).json(GenerateResponse("Get all photos success", returnResponse));
   

@@ -1,5 +1,5 @@
 <!-- nav bar -->
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" routerLinkActive="active" routerLink="/">Flickr Feed Viewer and Search</a>
     <div class="mr-auto"></div>
 
@@ -7,9 +7,9 @@
     <div class="navbar-expand">
         <div class="navbar-nav">
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" #tagValue aria-label="Search">
-                <!-- (keyup)="onKey($event)"  -->
-                <button (click)="onSubmit(tagValue)" type="button" class="btn btn-outline-success my-2 my-sm-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" #tagValue
+                    (keypress)="onKey($event)" aria-label="Search">
+                <button (click)="tagSubmit(tagValue.value)" type="button" class="btn btn-outline-success my-2 my-sm-0">
                     Search
                 </button>
             </form>
@@ -17,3 +17,4 @@
     </div>
 
 </nav>
+<br><br><br>
