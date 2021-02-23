@@ -1,46 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from "../../services/data.service";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Output()
+  public tag: EventEmitter<string> = new EventEmitter<string>();
 
-  tagValue: string = "";
-  tag: string = "";
-  searchedPhotos = [];
+  tagValue: string = '';
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  tagSubmit(value: string) {
+    console.log(value, 'tag-val');
+    // this.tagValue = value;
+    // this.setTag(this.tagValue);
+    // this.router.navigate(['/search']);
+    // this.tag.emit(value);
+    if (this.router.url === '/') {
+      this.tagValue = value;
+      this.setTag(this.tagValue);
+      this.router.navigate(['/search']);
+    }
+    this.tag.emit(value);
   }
 
-  // onKey(event: any) {
-  //   this.tag = event.target.value;
-  //   console.log(this.tag);
+  // onSubmit(item: any) {
+  //   this.tagValue = item.value;
+  //   console.log(this.tagValue);
+  //   this.setTag(this.tagValue);
+  //   this.router.navigate(["/search"]);
   // }
 
-
-  onSubmit(item: any) {
-    this.tagValue = item.value;
-    console.log(this.tagValue);
-    this.setTag(this.tagValue);
-    this.router.navigate(["/search"]);
-  }
-
-  setTag(tag: string){
+  setTag(tag: string) {
     this.dataService.setTag = tag;
   }
 
-  // async getSearchResults(search: any){
-  //   const res = await this.flickrImagesService.searchFromTag(search)
-  //   console.log(res, "fghj");
-  //   if (res){
-  //     this.router.navigate(["/search"])
-  //   }
-  // }
-
+  onKey(event: any) {
+    if (event.keyCode === 13) {
+      // this.tagValue = event.target.value;
+      this.tagSubmit(event.target.value);
+    }
+  }
 }
