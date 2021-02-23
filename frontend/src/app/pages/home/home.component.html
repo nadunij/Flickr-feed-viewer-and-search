@@ -1,13 +1,5 @@
 <app-header></app-header>
 
 <!-- show all images -->
-<div class="container py-5">
-
-    <div class="grid">
-        <ng-container *ngFor="let item of photos | keyvalue">
-            <img [src]="item.value" alt="Card image cap" sizes="(max-width: 600px) 480px,
-            800px">
-        </ng-container>
-    </div>
-
-</div>
+<app-container [photos]="photos">
+</app-container>
