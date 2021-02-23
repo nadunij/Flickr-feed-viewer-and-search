@@ -1,0 +1,9 @@
+<div class="container-fluid">
+
+    <div class="card-columns">
+        <div class="card" *ngFor="let item of photos | keyvalue">
+            <img class="card-img-top" [src]="item.value" [alt]="item.key" />
+        </div>
+    </div>
+
+</div>
