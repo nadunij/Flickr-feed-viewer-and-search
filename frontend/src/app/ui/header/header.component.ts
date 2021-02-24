@@ -44,8 +44,11 @@ export class HeaderComponent implements OnInit {
 
   onKey(event: any) {
     if (event.keyCode === 13) {
+      event.preventDefault();
+      console.log(event.target.value);
       // this.tagValue = event.target.value;
       this.tagSubmit(event.target.value);
+      // this.tag.emit(event.target.value);
     }
   }
 }
