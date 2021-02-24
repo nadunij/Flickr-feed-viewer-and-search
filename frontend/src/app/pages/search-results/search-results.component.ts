@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FlickrImagesService } from '../../services/flickr-images.service';
 import { DataService } from '../../services/data.service';
+import { PhotoData } from '../../model/photoData';
 
 @Component({
   selector: 'app-search-results',
@@ -10,8 +11,9 @@ import { DataService } from '../../services/data.service';
 export class SearchResultsComponent implements OnInit {
   loading: boolean = true;
   undefinedTag: boolean = false;
+  emptyTag: boolean = false;
   tag: string = '';
-  searchedPhotos = [];
+  searchedPhotos: Array<PhotoData> = [];
 
   constructor(
     private flickrImagesService: FlickrImagesService,
@@ -24,24 +26,34 @@ export class SearchResultsComponent implements OnInit {
   }
 
   getSearchedPhotos(tag: string) {
+    this.emptyTag = false;
     this.loading = true;
-    this.flickrImagesService.searchFromTag(tag).subscribe((result) => {
-      this.searchedPhotos = result.response;
+
+    if (tag == '') {
       this.loading = false;
-      if (Object.keys(this.searchedPhotos).length === 0) {
-        this.undefinedTag = true;
-      } else {
-        this.undefinedTag = false;
-      }
-    });
+      this.emptyTag = true;
+    } else {
+      this.flickrImagesService.searchFromTag(tag).subscribe((result) => {
+        this.searchedPhotos = result.response;
+        console.log(this.searchedPhotos);
+        this.loading = false;
+        if (Object.keys(this.searchedPhotos).length === 0) {
+          this.undefinedTag = true;
+        } else {
+          this.undefinedTag = false;
+        }
+      });
+    }
   }
 
   getTag() {
     this.tag = this.dataService.getTag;
+    console.log(this.tag, 'tag');
   }
 
   changeTag(tagValue: string) {
     this.tag = tagValue;
+    console.log(this.tag, 'tagg');
     this.getSearchedPhotos(this.tag);
   }
 }
