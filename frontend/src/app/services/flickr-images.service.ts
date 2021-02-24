@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { environment } from "../../environments/environment";
-import { Observable } from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FlickrImagesService {
-
   private apiURL = environment.apiUrl;
-  searchedResults: any = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   //Get all photos
   getAllPhotos(): Observable<any> {
@@ -22,6 +20,4 @@ export class FlickrImagesService {
   searchFromTag(tag: string): Observable<any> {
     return this.http.get(this.apiURL + `search/?tag=${tag}`);
   }
-
-  
 }
