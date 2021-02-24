@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FlickrImagesService } from '../../services/flickr-images.service';
+import { PhotoData } from '../../model/photoData';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { FlickrImagesService } from '../../services/flickr-images.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  photos = [];
+  photos: Array<PhotoData> = [];
 
   constructor(private flickrImagesService: FlickrImagesService) {}
 
@@ -16,9 +17,10 @@ export class HomeComponent implements OnInit {
   }
 
   //Get all photos
-  getAllPhotos() {
+  getAllPhotos(): Array<PhotoData> {
     this.flickrImagesService.getAllPhotos().subscribe((result) => {
       this.photos = result.response;
     });
+    return this.photos;
   }
 }
