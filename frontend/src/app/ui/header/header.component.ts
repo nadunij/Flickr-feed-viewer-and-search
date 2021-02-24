@@ -17,12 +17,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //on button click method
   tagSubmit(value: string) {
-    console.log(value, 'tag-val');
-    // this.tagValue = value;
-    // this.setTag(this.tagValue);
-    // this.router.navigate(['/search']);
-    // this.tag.emit(value);
     if (this.router.url === '/') {
       this.tagValue = value;
       this.setTag(this.tagValue);
@@ -31,24 +27,15 @@ export class HeaderComponent implements OnInit {
     this.tag.emit(value);
   }
 
-  // onSubmit(item: any) {
-  //   this.tagValue = item.value;
-  //   console.log(this.tagValue);
-  //   this.setTag(this.tagValue);
-  //   this.router.navigate(["/search"]);
-  // }
-
   setTag(tag: string) {
     this.dataService.setTag = tag;
   }
 
+  //on enter key method
   onKey(event: any) {
     if (event.keyCode === 13) {
       event.preventDefault();
-      console.log(event.target.value);
-      // this.tagValue = event.target.value;
       this.tagSubmit(event.target.value);
-      // this.tag.emit(event.target.value);
     }
   }
 }
