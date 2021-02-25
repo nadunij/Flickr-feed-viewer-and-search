@@ -1,16 +1,31 @@
 import { TestBed } from '@angular/core/testing';
+import {
+  HttpTestingController,
+  HttpClientTestingModule,
+} from '@angular/common/http/testing';
 
 import { FlickrImagesService } from './flickr-images.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('FlickrImagesService', () => {
   let service: FlickrImagesService;
+  let httpClient: HttpClient;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(FlickrImagesService);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
+    // service = TestBed.inject(FlickrImagesService);
+    service = new FlickrImagesService(TestBed.inject(HttpClient));
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+});
+
+describe('getAllPhotos', () => {
+  it('should find right number of entries', () => {
+    expect(service.getAllPhotos().length).toEqual(20);
   });
 });
