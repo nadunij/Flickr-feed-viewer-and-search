@@ -29,7 +29,7 @@ export class SearchResultsComponent implements OnInit {
     this.emptyTag = false;
     this.loading = true;
 
-    if (tag == '') {
+    if (tag == '' || tag.match(/^\s*$/) !== null) {
       this.loading = false;
       this.emptyTag = true;
     } else {
