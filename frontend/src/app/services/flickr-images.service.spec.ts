@@ -23,9 +23,3 @@ describe('FlickrImagesService', () => {
     expect(service).toBeTruthy();
   });
 });
-
-describe('getAllPhotos', () => {
-  it('should find right number of entries', () => {
-    expect(service.getAllPhotos().length).toEqual(20);
-  });
-});
