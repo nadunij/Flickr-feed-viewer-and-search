@@ -1,7 +1,5 @@
-// import { FlickrUrl } from "../controllers/flickrUrl.js";
 import { FlickrService } from "../services/flickrService.js";
 import fixture from "./fixture";
-// import { FlickrUrl } from "./flickrUrl.js";
 
 describe("flickrUrl", () => {
   let flickrServiceInstance;
