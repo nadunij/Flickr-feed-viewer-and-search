@@ -8,17 +8,12 @@ const app = express();
 // Port config
 app.set("port", process.env.PORT || 3000);
 
-app.get('/', function (req, res) {
-    res.send('GET request to the homepage')
-  })
-  
-app.use(cors({origin: '*'}))
+app.use(cors({ origin: "*" }));
 
-app.use("/api/flickr", flickrRoutes)
+app.use("/api/flickr", flickrRoutes);
 
 app.listen(app.get("port"), () => {
-    console.log("Server on port", app.get("port"));
-  });
+  console.log("Server on port", app.get("port"));
+});
 
-  export default app;
-  
+export default app;
