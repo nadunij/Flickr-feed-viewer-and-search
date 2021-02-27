@@ -1,16 +1,13 @@
 import axios from "axios";
 import { FlickrService } from "../services/flickrService.js";
 import { GenerateResponse } from "../services/responseService.js";
-// import { FlickrUrl } from "./flickrUrl.js";
 
 //Get all photos
 export const getAllPhotos = async (req, response) => {
-  //   let flickrUrl = new FlickrUrl();
   let flickrService = new FlickrService();
 
   try {
     const photos = await axios.get(flickrService.getUrl(null));
-
     let returnres = flickrService.passPhotos(photos);
 
     response
@@ -23,14 +20,11 @@ export const getAllPhotos = async (req, response) => {
 
 //Search photos by tag
 export const searchResults = async (req, response) => {
-  //   let flickrUrl = new FlickrUrl();
   let flickrService = new FlickrService();
 
   try {
     let tags = [req.query.tag];
-
     const searchPhotos = await axios.get(flickrService.getUrl(tags));
-
     const returnResponse = flickrService.passPhotos(searchPhotos);
 
     response
