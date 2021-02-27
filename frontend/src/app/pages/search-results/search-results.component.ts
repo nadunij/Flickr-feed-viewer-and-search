@@ -25,6 +25,7 @@ export class SearchResultsComponent implements OnInit {
     this.getSearchedPhotos(this.tag);
   }
 
+  //get search results from a tag
   getSearchedPhotos(tag: string) {
     this.emptyTag = false;
     this.loading = true;
@@ -46,11 +47,13 @@ export class SearchResultsComponent implements OnInit {
     }
   }
 
+  //get the tag from home component to search-results component
   getTag() {
     this.tag = this.dataService.getTag;
     console.log(this.tag, 'tag');
   }
 
+  //change the tag in the search-results component
   changeTag(tagValue: string) {
     this.tag = tagValue;
     console.log(this.tag, 'tagg');
